@@ -10,11 +10,11 @@ class ChatUI {
   }
 
   getInput() {
-    this.txt = this.input.value
+    return this.txt = this.input.value
   }
 
   emitMessages(message) {
-    this.chat.sendMessage(this.txt);
+    return this.chat.sendMessage(this.txt);
   }
 
   addMessage(message) {
