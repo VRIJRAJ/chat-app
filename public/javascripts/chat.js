@@ -1,11 +1,11 @@
-class Chat {
-  constructor(socket) {
-    this.socket = socket;
-  }
-
-  sendMessage(message) {
-    this.socket.emit('message', {
-      text: message
-    });
-  }
+const Chat = function(socket) {
+  this.socket = socket;
 }
+
+Chat.prototype.sendMsg = function(msg) {
+  this.socket.emit('message', {
+    text: msg
+  });
+}
+
+module.exports = Chat;

@@ -1,25 +1,34 @@
 const Chat = require('./chat.js');
 
-class ChatUI {
-  constructor(socket) {
-    this.chat = new Chat(socket);
+const ChatUI = function(socket) {
+  this.chat = new Chat(socket);
 
-    this.messages = document.getElementById('msg-list');
-    this.input = document.getElementById('msg-input');
-    this.txt = '';
-  }
+  this.form = document.querySelector('form');
+  this.msgList = document.querySelector('#msg-list');
 
-  getInput() {
-    return this.txt = this.input.value
-  }
+  this.form.addEventListener('submit', this.processInput);
+};
 
-  emitMessages(message) {
-    return this.chat.sendMessage(this.txt);
-  }
+ChatUI.prototype.processInput = function(e) {
+  e.preventDefault();
+  const msg = e.target.querySelector('input').value;
+  
+  this.emitMessages(msg);
+};
 
-  addMessage(message) {
-    let li = document.createElement('li');
-    li.value = message;
-    messages.appendChild(li);
-  }
-}
+ChatUI.prototype.getInput = function() {
+  this.form.querySelector('input').value;
+};
+
+ChatUI.prototype.emitMessages = function(msg) {
+  this.chat.sendMsg(msg);
+};
+
+ChatUI.prototype.addMessage = function(msg) {
+  console.log(msg);
+  let li = document.createElement('li');
+  li.value = msg;
+  msgList.appendChild(li);
+};
+
+module.exports = ChatUI;
