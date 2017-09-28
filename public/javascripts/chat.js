@@ -1,4 +1,4 @@
-const Chat = function(socket) {
+function Chat (socket) {
   this.socket = socket;
 }
 
