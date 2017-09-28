@@ -5,5 +5,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
   socket.on('message', (msg) => {
     myChat.addMsg(msg.text);
-  })
-})
+  });
+});
