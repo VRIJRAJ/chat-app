@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const io = require('socket.io-client')();
+  const socket = require('socket.io-client')();
   const chatUI = require('./chatUI');
+  const myChat = new chatUI(socket);
 
-  const myChat = new myChatUI(io);
-  io.on('message', (msg) => {
-    myChat.addMessage(msg);
+  socket.on('message', (msg) => {
+    myChat.addMsg(msg.text);
   })
 })
