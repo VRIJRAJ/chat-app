@@ -18,10 +18,6 @@ ChatUI.prototype.sendMsg = function() {
   this.chat.sendMsg(this.getInput());
 }
 
-ChatUI.prototype.emitMessages = function(msg) {
-  this.chat.sendMsg(msg);
-};
-
 ChatUI.prototype.addMsg = function(msg) {
   let newMsg = document.createElement('li');
   newMsg.textContent = msg;
