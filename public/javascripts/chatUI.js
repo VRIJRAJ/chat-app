@@ -22,11 +22,10 @@ ChatUI.prototype.emitMessages = function(msg) {
   this.chat.sendMsg(msg);
 };
 
-ChatUI.prototype.addMessage = function(msg) {
-  console.log(msg);
-  let li = document.createElement('li');
-  li.value = msg;
-  msgList.appendChild(li);
+ChatUI.prototype.addMsg = function(msg) {
+  let newMsg = document.createElement('li');
+  newMsg.textContent = msg;
+  this.msgList.appendChild(newMsg);
 };
 
 module.exports = ChatUI;
