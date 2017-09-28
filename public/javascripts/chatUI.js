@@ -10,16 +10,13 @@ function ChatUI (socket) {
   this.submitHandler();
 };
 
-ChatUI.prototype.processInput = function(e) {
-  e.preventDefault();
-  const msg = e.target.querySelector('input').value;
-  
-  this.emitMessages(msg);
+ChatUI.prototype.getInput = function() {
+  return this.input.value;
 };
 
-ChatUI.prototype.getInput = function() {
-  this.form.querySelector('input').value;
-};
+ChatUI.prototype.sendMsg = function() {
+  this.chat.sendMsg(this.getInput());
+}
 
 ChatUI.prototype.emitMessages = function(msg) {
   this.chat.sendMsg(msg);
