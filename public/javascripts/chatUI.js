@@ -1,12 +1,13 @@
 const Chat = require('./chat.js');
 
-const ChatUI = function(socket) {
+function ChatUI (socket) {
   this.chat = new Chat(socket);
-
   this.form = document.querySelector('form');
-  this.msgList = document.querySelector('#msg-list');
-
-  this.form.addEventListener('submit', this.processInput);
+  this.msgList = document.querySelector('ul#msg-list');
+  this.roomList = document.querySelector('ul#room-list');
+  this.input = document.querySelector('input');
+  this.room = document.querySelector('#room');
+  this.submitHandler();
 };
 
 ChatUI.prototype.processInput = function(e) {
