@@ -6,4 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
   socket.on('message', (msg) => {
     myChat.addMsg(msg.text);
   });
+
+  socket.on('joinResult', result => {
+    myChat.setRoom(result.room);
+    myChat.addMsg('Room changed.');
+  });
+
+
 });
