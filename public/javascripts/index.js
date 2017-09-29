@@ -12,5 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
     myChat.addMsg('Room changed.');
   });
 
+  socket.on('rooms', rooms => {
+    myChat.roomList.innerHTML = '';
+    rooms.forEach(room => myChat.addRoom(room));
+    myChat.roomList.querySelectorAll('li').forEach(li => {
+      li.addEventListener('click', e => {
+        myChat.chat.processCommand(`/join ${li.textContent}`);
+        myChat.input.focus();
+      });
+    });
+  });
 
+  setInterval(() => {
+    socket.emit('rooms');
+  }, 1000);
+
+  myChat.input.focus();
 });
