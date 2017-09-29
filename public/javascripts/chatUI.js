@@ -18,11 +18,21 @@ ChatUI.prototype.sendMsg = function() {
   this.chat.sendMsg(this.getInput());
 }
 
+ChatUI.prototype.setRoom = function(room) {
+  this.room.textContent = room;
+}
+
 ChatUI.prototype.addMsg = function(msg) {
   let newMsg = document.createElement('li');
   newMsg.textContent = msg;
   this.msgList.appendChild(newMsg);
 };
+
+ChatUI.prototype.addRoom = function(room) {
+  const newRoom = document.createElement('li');
+  newRoom.textContent = room;
+  this.roomList.appendChild(newRoom);
+}
 
 ChatUI.prototype.submitHandler = function() {
   this.form.addEventListener('submit', e => {
