@@ -34,14 +34,27 @@ ChatUI.prototype.addRoom = function(room) {
   this.roomList.appendChild(newRoom);
 }
 
+ChatUI.prototype.processInput = function() {
+  const msg = this.getInput();
+  let response;
+
+  if (msg[0] === '/') {
+    response = this.chat.processCommand(msg);
+    if (response) {
+      this.addMsg(response);
+    }
+  } else {
+    this.sendMsg(this.room.textContent);
+    this.addMsg(msg);
+  }
+}
+
 ChatUI.prototype.submitHandler = function() {
   this.form.addEventListener('submit', e => {
     e.preventDefault();
-    const msg = this.getInput();
-    this.sendMsg(this.room.textContent);
-    this.addMsg(msg);
+    this.processInput();
     this.input.value = '';
-  })
+  });
 }
 
 module.exports = ChatUI;
